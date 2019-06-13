@@ -170,6 +170,18 @@ def assistant(command):
     elif 'photo' in command:
         os.system('streamer -f jpeg -o photos/pic.jpeg')
         response('Photo taken')
+    elif 'list' in command:
+        shopping_list = []
+        response('What do you want to buy')
+        response('Say done to stop adding')
+        while True:
+            item = myCommand()
+            if item == 'done':
+                break
+            shopping_list.append(item)
+        response('Here is yout list')
+        for item in shopping_list:
+            response(item)
 
     else:
         try:
