@@ -28,6 +28,17 @@ import subprocess
 import sys
 
 
+def indianews():
+    main_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=67adfba1c7aa4ec3b33a94a83f4998d4"
+    page = requests.get(main_url).json()
+    article = page["articles"]
+    results = []
+    for ar in article:
+        results.append(ar["title"])
+    for i in range(len(results)):
+        print(i + 1, results[i])
+
+
 def checkfor(args, rv=0):
     if isinstance(args, str):
         if ' ' in args:
@@ -182,6 +193,8 @@ def assistant(command):
         response('Here is yout list')
         for item in shopping_list:
             response(item)
+    elif 'news' in command:
+        indianews()
 
     else:
         try:
